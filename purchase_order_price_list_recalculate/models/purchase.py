@@ -4,7 +4,7 @@
 from odoo import api, fields, models
 
 @api.onchange('requisition_id')
-     def _onchange_price_recalculation(self):
+def _onchange_price_recalculation(self):
         res = super(PurchaseOrderLine, self)._onchange_quantity()
         if self.order_id.requisition_id:
             for line in self.order_id.requisition_id.line_ids.filtered(lambda l: l.product_id == self.product_id):
@@ -14,4 +14,4 @@ from odoo import api, fields, models
                 else:
                     self.price_unit = line.price_unit
                 break
-        return res               
+        return res
