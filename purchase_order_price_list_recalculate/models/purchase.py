@@ -20,8 +20,6 @@ class PurchaseOrderRecalculation(models.Model):
                     uom=line.product_uom.id,
 																		   
                 )
-                line.price_unit = self.env['account.tax']._fix_tax_included_price_company(
-                    line.price_unit(product), product.taxes_id, line.tax_id, line.company_id)
 
     @api.onchange('requisition_id', 'partner_id')
     def _onchange_discount_recalculation(self):
