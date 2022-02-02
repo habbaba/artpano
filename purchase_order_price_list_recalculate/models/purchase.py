@@ -10,7 +10,4 @@ def _onchange_price_recalculation(self):
             for line in self.order_id.requisition_id.line_ids.filtered(lambda l: l.product_id == self.product_id):
                 self.price_unit = line.product_uom_id._compute_price(
                         line.price_unit, self.product_uom)
-                else:
-                    self.price_unit = line.price_unit
-                break
         return res
