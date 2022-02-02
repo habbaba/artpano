@@ -6,10 +6,9 @@ from odoo import api, fields, models
 @api.onchange('requisition_id')
 def _onchange_price_recalculation(self):
         res = super(PurchaseOrderLine, self)._onchange_requisition_id()
-        if self.order_id.requisition_id:
+        if self.order_id.requisition_id != order_id.requisition_id:
             for line in self.order_id.requisition_id.line_ids.filtered(lambda l: l.product_id == self.product_id):
-                if line.product_uom_id != self.product_uom:
-                    self.price_unit = line.product_uom_id._compute_price(
+                self.price_unit = line.product_uom_id._compute_price(
                         line.price_unit, self.product_uom)
                 else:
                     self.price_unit = line.price_unit
