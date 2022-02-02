@@ -21,14 +21,3 @@ class PurchaseOrderRecalculation(models.Model):
                 )
                 line.price_unit = self.env['account.tax']._fix_tax_included_price_company(
                     line._get_display_price(product), product.taxes_id, line.tax_id, line.company_id)
-
-    @api.onchange('requisition_id', 'partner_id')
-    def _onchange_discount_recalculation(self):
-        """this method is mainly used for the discount price calculate according to the price list"""
-        if self.partner_id and self.requisition_id:
-            for line in self.order_line:
-                if not (line.product_id and line.product_uom and
-                        line.order_id.partner_id and line.order_id.requisition_id and
-                        line.order_id.requisition_id.discount_policy == 'without_discount' and
-                        self.env.user.has_group('product.group_discount_per_so_line')):
-                    return
