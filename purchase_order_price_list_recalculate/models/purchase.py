@@ -29,7 +29,5 @@ class PurchaseOrderRecalculation(models.Model):
         if self.partner_id and self.requisition_id:
             for line in self.order_line:
                 if not (line.product_id and line.product_uom and
-                        line.order_id.partner_id and line.order_id.requisition_id and
-                        line.order_id.requisition_id.discount_policy == 'without_discount' and
-                        self.env.user.has_group('product.group_discount_per_so_line')):
+                        line.order_id.partner_id and line.order_id.requisition_id):
                     return
