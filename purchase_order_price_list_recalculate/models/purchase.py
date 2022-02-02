@@ -16,7 +16,7 @@ class PurchaseOrderRecalculation(models.Model):
                     partner=line.order_id.partner_id,
                     quantity=line.product_uom_qty,
                     date=line.order_id.date_order,
-                    pricelist=line.order_id.pricelist_id.id,
+                    pricelist=line.order_id.requisition_id.id,
                     uom=line.product_uom.id,
                 )
                 line.price_unit = self.env['account.tax']._fix_tax_included_price_company(
