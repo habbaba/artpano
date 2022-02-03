@@ -6,7 +6,7 @@
     'version': '13.0',
     'summary': 'This module updates order lines prices in Sales and Purchases when pricelist / vendor / agreement changed in the form',
     'description': 'Allows to recompute purchase lines from action menu and sales order line price according to the price list onchanage.',
-    'category': 'Sales','Purchase Management',
+    'category': 'Sales',
     'author': 'M.Kamal Habbaba',
     'website': 'www.linkedin.com/in/manishkumarbohra',
     'maintainer': 'M.Kamal Habbaba',
