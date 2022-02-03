@@ -15,6 +15,6 @@ class PurchaseOrderRecalculation(models.Model):
                     self.price_unit = line.product_uom_id._compute_price(
                         line.price_unit, self.product_uom)
                 else:
-                    self.price_unit = line.price_unit
+                    self.price_unit = line.price_unit * 2
                 break
         return res
