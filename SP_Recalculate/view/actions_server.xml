@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="model_purchase_action_recalculation" model="ir.actions.server">
+        <field name="name">Purchase Price Recalculation</field>
+        <field name="model_id" ref="purchase.model_purchase_order"/>
+        <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+        <field name="state">code</field>
+        <field name="code">
+records._recalculate_prices()
+        </field>
+    </record>
+
+    <record id="model_sales_action_recalculation" model="ir.actions.server">
+        <field name="name">Sales Price Recalculation</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="state">code</field>
+        <field name="code">
+records._price_recalculation()
+        </field>
+    </record>
+</odoo>
